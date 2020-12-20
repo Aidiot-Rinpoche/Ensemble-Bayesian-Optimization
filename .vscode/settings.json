@@ -1,0 +1,10 @@
+{
+    "python.pythonPath": "C:\\ProgramData\\Miniconda3\\python.exe",
+    "python.autoComplete.addBrackets": true,
+    "python.autoComplete.extraPaths": [
+    "C:\\ProgramData\\Miniconda3\\Lib\\site-packages",
+    "C:\\ProgramData\\Miniconda3\\Scripts",
+    "C:\\Users\\dingmin\\Documents\\workspace\\Ensemble-Bayesian-Optimization",
+    "C:\\Users\\dingmin\\Documents\\workspace\\Ensemble-Bayesian-Optimization\\test",
+],
+}
