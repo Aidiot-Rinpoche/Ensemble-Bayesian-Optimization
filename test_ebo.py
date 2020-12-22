@@ -8,13 +8,13 @@ logging.basicConfig(filename='example.log',level=logging.DEBUG)
 
 ##################### define test function ######################
 dx = 2
-z = sample_z(dx)
+z = sample_z(dx) #纬度上的采样
 k = np.array([10]*dx)
 x_range = nm.repmat([[0.],[1.]], 1, dx)
 sigma = 0.01
 n = 100
 f = SampledGpFunc(x_range, dx, z, k, n, sigma)
-plot_f(f)
+#plot_f(f)
 ##################################################################
 
 # run ebo

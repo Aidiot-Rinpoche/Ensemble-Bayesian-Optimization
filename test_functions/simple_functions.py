@@ -31,8 +31,11 @@ class SampledGpFunc(object):
         self.x_range = x_range
         kern = DenseL1Kernel(self.z, self.k)
 
+        # 随机生成n组再x_range范围内的向量 n*dx
         X = np.random.uniform(x_range[0], x_range[1], (n, dx))
+        # 生成n*n协方差矩阵
         kxx = kern(X) + sigma ** 2 * np.eye(X.shape[0])
+        # 生成X坐标对应的y
         y = np.random.multivariate_normal(np.zeros(n), kxx).T
 
         self.gp = DenseKernelGP(X, y, sigma=sigma, kern=kern)
@@ -40,8 +43,8 @@ class SampledGpFunc(object):
         self.get_max()
 
     def get_max(self):
-        x = self.x_range[0].copy()
-        all_cat = np.unique(self.z)
+        x = self.x_range[0].copy() #范围的头
+        all_cat = np.unique(self.z) #维度的采样
         for a in all_cat:
             active = self.z == a
             k1 = DenseL1Kernel(self.z[active], self.k[active])
@@ -51,7 +54,7 @@ class SampledGpFunc(object):
         self.argmax = x
         self.f_max = -np.squeeze(np.array(self.gp.kern(x, self.gp.X)).dot(self.gp.alpha))
 
-    def __call__(self, x):
+    def __call__(self, x):# 正常调用时x
         if x.ndim == 1:
             n = 1
         else:
