@@ -12,7 +12,7 @@ print(x_range)
 # run ebo
 options = {'x_range':x_range, # input domain
            'dx':x_range.shape[1], # input dimension
-           'max_value':f.get_value(), # target value
+           'max_value':f.f_value, # target value
            'T':10, # number of iterations
            'B':10, # number of candidates to be evaluated
            'dim_limit':3, # max dimension of the input for each additive function component
